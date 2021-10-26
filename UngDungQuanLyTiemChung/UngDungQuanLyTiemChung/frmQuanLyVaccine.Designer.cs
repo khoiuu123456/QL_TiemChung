@@ -39,23 +39,21 @@
             this.txtCMND = new DevExpress.XtraEditors.TextEdit();
             this.txtMaNCS = new DevExpress.XtraEditors.TextEdit();
             this.txtDiachi = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupThongTinNguoiChamSoc = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -69,23 +67,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCMND.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNCS.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiachi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupThongTinNguoiChamSoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -95,7 +91,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(1566, 835);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "groupControl1";
+            this.groupControl1.Text = "Quản lý lô vaccine";
             // 
             // groupControl2
             // 
@@ -120,7 +116,6 @@
             this.layoutControl1.Controls.Add(this.txtMaNCS);
             this.layoutControl1.Controls.Add(this.txtDiachi);
             this.layoutControl1.Controls.Add(this.textEdit2);
-            this.layoutControl1.Controls.Add(this.textEdit3);
             this.layoutControl1.Controls.Add(this.textEdit4);
             this.layoutControl1.Controls.Add(this.textEdit5);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -196,6 +191,30 @@
             this.txtDiachi.StyleController = this.layoutControl1;
             this.txtDiachi.TabIndex = 4;
             // 
+            // textEdit2
+            // 
+            this.textEdit2.Location = new System.Drawing.Point(550, 120);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Size = new System.Drawing.Size(227, 22);
+            this.textEdit2.StyleController = this.layoutControl1;
+            this.textEdit2.TabIndex = 7;
+            // 
+            // textEdit4
+            // 
+            this.textEdit4.Location = new System.Drawing.Point(918, 201);
+            this.textEdit4.Name = "textEdit4";
+            this.textEdit4.Size = new System.Drawing.Size(594, 22);
+            this.textEdit4.StyleController = this.layoutControl1;
+            this.textEdit4.TabIndex = 4;
+            // 
+            // textEdit5
+            // 
+            this.textEdit5.Location = new System.Drawing.Point(919, 120);
+            this.textEdit5.Name = "textEdit5";
+            this.textEdit5.Size = new System.Drawing.Size(593, 22);
+            this.textEdit5.StyleController = this.layoutControl1;
+            this.textEdit5.TabIndex = 7;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -225,7 +244,7 @@
             this.groupThongTinNguoiChamSoc.Location = new System.Drawing.Point(0, 0);
             this.groupThongTinNguoiChamSoc.Name = "groupThongTinNguoiChamSoc";
             this.groupThongTinNguoiChamSoc.Size = new System.Drawing.Size(1532, 243);
-            this.groupThongTinNguoiChamSoc.Text = "Thông tin vaccine";
+            this.groupThongTinNguoiChamSoc.Text = "Thông tin lô vaccine";
             // 
             // layoutControlGroup3
             // 
@@ -258,6 +277,16 @@
             this.layoutControlItem5.Text = "Số lượng tồn";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(133, 17);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.textEdit2;
+            this.layoutControlItem4.CustomizationFormText = "Số điện thoại";
+            this.layoutControlItem4.Location = new System.Drawing.Point(368, 28);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(369, 28);
+            this.layoutControlItem4.Text = "Số liều tồn";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(133, 17);
+            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.dateTimeNgaySinh;
@@ -267,11 +296,20 @@
             this.layoutControlItem6.Text = "Hạn sử dụng";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(133, 17);
             // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.textEdit5;
+            this.layoutControlItem10.CustomizationFormText = "Số điện thoại";
+            this.layoutControlItem10.Location = new System.Drawing.Point(737, 28);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(735, 28);
+            this.layoutControlItem10.Text = "Tình trạng";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(133, 17);
+            // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
-            this.layoutControlItem3,
             this.layoutControlItem9});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 109);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
@@ -287,77 +325,15 @@
             this.layoutControlItem1.Text = "Mã vaccine";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(133, 16);
             // 
-            // textEdit2
-            // 
-            this.textEdit2.Location = new System.Drawing.Point(550, 120);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(227, 22);
-            this.textEdit2.StyleController = this.layoutControl1;
-            this.textEdit2.TabIndex = 7;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.textEdit2;
-            this.layoutControlItem4.CustomizationFormText = "Số điện thoại";
-            this.layoutControlItem4.Location = new System.Drawing.Point(368, 28);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(369, 28);
-            this.layoutControlItem4.Text = "Số liều tồn";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(133, 17);
-            // 
-            // textEdit3
-            // 
-            this.textEdit3.Location = new System.Drawing.Point(1302, 201);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(210, 22);
-            this.textEdit3.StyleController = this.layoutControl1;
-            this.textEdit3.TabIndex = 4;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.textEdit3;
-            this.layoutControlItem3.CustomizationFormText = "Địa chỉ";
-            this.layoutControlItem3.Location = new System.Drawing.Point(1120, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(352, 28);
-            this.layoutControlItem3.Text = "Địa chỉ";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(133, 17);
-            // 
-            // textEdit4
-            // 
-            this.textEdit4.Location = new System.Drawing.Point(918, 201);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(242, 22);
-            this.textEdit4.StyleController = this.layoutControl1;
-            this.textEdit4.TabIndex = 4;
-            // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.textEdit4;
             this.layoutControlItem9.CustomizationFormText = "Địa chỉ";
             this.layoutControlItem9.Location = new System.Drawing.Point(736, 0);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(384, 28);
+            this.layoutControlItem9.Size = new System.Drawing.Size(736, 28);
             this.layoutControlItem9.Text = "Loại vaccine";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(133, 17);
-            // 
-            // textEdit5
-            // 
-            this.textEdit5.Location = new System.Drawing.Point(919, 120);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(593, 22);
-            this.textEdit5.StyleController = this.layoutControl1;
-            this.textEdit5.TabIndex = 7;
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.textEdit5;
-            this.layoutControlItem10.CustomizationFormText = "Số điện thoại";
-            this.layoutControlItem10.Location = new System.Drawing.Point(737, 28);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(735, 28);
-            this.layoutControlItem10.Text = "Tình trạng";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(133, 17);
             // 
             // frmQuanLyVaccine
             // 
@@ -382,23 +358,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCMND.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaNCS.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiachi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupThongTinNguoiChamSoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -427,9 +401,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
         private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraEditors.TextEdit textEdit5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
