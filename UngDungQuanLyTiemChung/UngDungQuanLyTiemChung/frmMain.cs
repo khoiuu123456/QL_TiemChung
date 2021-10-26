@@ -115,5 +115,15 @@ namespace UngDungQuanLyTiemChung
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void btnThongTinNV_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmThongTinNhanVien(), sender);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmQuanLyTaiKhoan(), sender);
+        }
     }
 }

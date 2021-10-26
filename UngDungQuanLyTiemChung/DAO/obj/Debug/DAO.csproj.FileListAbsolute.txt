@@ -1,0 +1,7 @@
+D:\Khoa_Luan_TotNghiep\WinForm_QuanLyTiemChung\GIT_QL_TiemChung\QL_TiemChung\UngDungQuanLyTiemChung\DAO\bin\Debug\DAO.dll
+D:\Khoa_Luan_TotNghiep\WinForm_QuanLyTiemChung\GIT_QL_TiemChung\QL_TiemChung\UngDungQuanLyTiemChung\DAO\bin\Debug\DAO.pdb
+D:\Khoa_Luan_TotNghiep\WinForm_QuanLyTiemChung\GIT_QL_TiemChung\QL_TiemChung\UngDungQuanLyTiemChung\DAO\bin\Debug\DTO.dll
+D:\Khoa_Luan_TotNghiep\WinForm_QuanLyTiemChung\GIT_QL_TiemChung\QL_TiemChung\UngDungQuanLyTiemChung\DAO\bin\Debug\DTO.pdb
+D:\Khoa_Luan_TotNghiep\WinForm_QuanLyTiemChung\GIT_QL_TiemChung\QL_TiemChung\UngDungQuanLyTiemChung\DAO\obj\Debug\DAO.dll
+D:\Khoa_Luan_TotNghiep\WinForm_QuanLyTiemChung\GIT_QL_TiemChung\QL_TiemChung\UngDungQuanLyTiemChung\DAO\obj\Debug\DAO.pdb
+D:\Khoa_Luan_TotNghiep\WinForm_QuanLyTiemChung\GIT_QL_TiemChung\QL_TiemChung\UngDungQuanLyTiemChung\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
