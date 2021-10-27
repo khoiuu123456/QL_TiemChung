@@ -915,3 +915,56 @@ AS
 	        ) 
 	END
 GO
+----------------------------------------------------------------------THỦ TỤC CỦA LÔ VACCINE----------------------------------------------------------------------
+--Thủ tục thêm người chăm sóc
+CREATE PROC sp_ThemLoVaccine @SOLUONGTON int, @SOLIEUTON int, @HANSUDUNG date, @MAVACCINE char(5),@TINHTRANG int,@LOAIVACCINE nvarchar(100)
+AS
+	BEGIN
+	SET DATEFORMAT DMY
+	INSERT INTO dbo.LOVACCINE
+	        ( SOLO ,
+	          SOLUONGTON ,
+	          SOLIEUTON ,
+	          HANSUDUNG ,
+	          MAVACCINE ,
+	          TINHTRANG,
+			  LOAIVACCINE
+	        )
+	VALUES  (DBO.AUTO_IDLV(),
+			@SOLUONGTON,
+			@SOLIEUTON,
+			@HANSUDUNG,
+			@MAVACCINE,
+			@TINHTRANG,
+			@LOAIVACCINE
+	        ) 
+	END
+GO
+----------------------------------------------------------------------THỦ TỤC CỦA BÉ----------------------------------------------------------------------   
+--Thủ tục thêm thông tin bé
+CREATE PROC sp_ThemVaccine @TENVACCINE nvarchar(50), @CHONGCHIDINH nvarchar(1000), @TACDUNGPHU nvarchar(1000),@CACHDUNG nvarchar(1000),@LIEULUONG nvarchar(1000), @DUNGMOI nvarchar(1000), @XUATXU nvarchar(1000),@CHIDINHTIEM nvarchar(1000)
+AS
+	BEGIN
+	INSERT INTO dbo.VACCINE
+	        ( MAVACCINE ,
+	          TENVACCINE ,
+	          CHONGCHIDINH ,
+	          TACDUNGPHU ,
+	          CACHDUNG ,
+	          LIEULUONG,
+			  DUNGMOI,
+			  XUATXU,
+			  CHIDINHTIEM
+	        )
+	VALUES  (DBO.AUTO_IDBE(),
+			@TENVACCINE,
+			@CHONGCHIDINH,
+			@TACDUNGPHU,
+			@CACHDUNG,
+			@LIEULUONG,
+			@DUNGMOI,
+			@XUATXU,
+	        @CHIDINHTIEM
+			) 
+	END
+GO
