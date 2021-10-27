@@ -31,8 +31,8 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.rdoVC = new System.Windows.Forms.RadioButton();
             this.rdoLoVC = new System.Windows.Forms.RadioButton();
+            this.rdoVaccine = new System.Windows.Forms.RadioButton();
             this.gridHienThi = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.layoutView1 = new DevExpress.XtraGrid.Views.Layout.LayoutView();
@@ -42,7 +42,6 @@
             this.txtSoLieuTon = new DevExpress.XtraEditors.TextEdit();
             this.txtTinhTrang = new DevExpress.XtraEditors.TextEdit();
             this.txtSoLo = new DevExpress.XtraEditors.TextEdit();
-            this.txtMaVC = new DevExpress.XtraEditors.TextEdit();
             this.txtLoaiVC = new DevExpress.XtraEditors.TextEdit();
             this.txtMaVaccine = new DevExpress.XtraEditors.TextEdit();
             this.txtTacDungPhu = new DevExpress.XtraEditors.TextEdit();
@@ -53,6 +52,7 @@
             this.txtDungMoi = new DevExpress.XtraEditors.TextEdit();
             this.txtXuatXu = new DevExpress.XtraEditors.TextEdit();
             this.txtChiDinhTiem = new DevExpress.XtraEditors.TextEdit();
+            this.comboMaVC = new System.Windows.Forms.ComboBox();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -65,8 +65,8 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupThongTinVC = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -92,7 +92,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLieuTon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTinhTrang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaVC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoaiVC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVaccine.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTacDungPhu.Properties)).BeginInit();
@@ -115,8 +114,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupThongTinVC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
@@ -140,6 +139,7 @@
             this.groupControl1.Size = new System.Drawing.Size(1565, 833);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Quản lý lô vaccine";
+            this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
             // groupControl2
             // 
@@ -155,18 +155,18 @@
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1561, 806);
             this.groupControl2.TabIndex = 0;
+            this.groupControl2.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControl2_CustomButtonClick);
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.rdoVC);
             this.layoutControl1.Controls.Add(this.rdoLoVC);
+            this.layoutControl1.Controls.Add(this.rdoVaccine);
             this.layoutControl1.Controls.Add(this.gridHienThi);
             this.layoutControl1.Controls.Add(this.dateTimeHSD);
             this.layoutControl1.Controls.Add(this.txtSoLuongTon);
             this.layoutControl1.Controls.Add(this.txtSoLieuTon);
             this.layoutControl1.Controls.Add(this.txtTinhTrang);
             this.layoutControl1.Controls.Add(this.txtSoLo);
-            this.layoutControl1.Controls.Add(this.txtMaVC);
             this.layoutControl1.Controls.Add(this.txtLoaiVC);
             this.layoutControl1.Controls.Add(this.txtMaVaccine);
             this.layoutControl1.Controls.Add(this.txtTacDungPhu);
@@ -177,6 +177,7 @@
             this.layoutControl1.Controls.Add(this.txtDungMoi);
             this.layoutControl1.Controls.Add(this.txtXuatXu);
             this.layoutControl1.Controls.Add(this.txtChiDinhTiem);
+            this.layoutControl1.Controls.Add(this.comboMaVC);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 49);
             this.layoutControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -186,25 +187,26 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // rdoVC
-            // 
-            this.rdoVC.Location = new System.Drawing.Point(781, 16);
-            this.rdoVC.Name = "rdoVC";
-            this.rdoVC.Size = new System.Drawing.Size(760, 25);
-            this.rdoVC.TabIndex = 15;
-            this.rdoVC.TabStop = true;
-            this.rdoVC.Text = "Vaccine";
-            this.rdoVC.UseVisualStyleBackColor = true;
-            // 
             // rdoLoVC
             // 
-            this.rdoLoVC.Location = new System.Drawing.Point(16, 16);
+            this.rdoLoVC.Location = new System.Drawing.Point(782, 16);
             this.rdoLoVC.Name = "rdoLoVC";
             this.rdoLoVC.Size = new System.Drawing.Size(759, 25);
-            this.rdoLoVC.TabIndex = 14;
+            this.rdoLoVC.TabIndex = 15;
             this.rdoLoVC.TabStop = true;
             this.rdoLoVC.Text = "Lô vaccine";
             this.rdoLoVC.UseVisualStyleBackColor = true;
+            this.rdoLoVC.CheckedChanged += new System.EventHandler(this.rdoVC_CheckedChanged);
+            // 
+            // rdoVaccine
+            // 
+            this.rdoVaccine.Location = new System.Drawing.Point(16, 16);
+            this.rdoVaccine.Name = "rdoVaccine";
+            this.rdoVaccine.Size = new System.Drawing.Size(760, 25);
+            this.rdoVaccine.TabIndex = 14;
+            this.rdoVaccine.TabStop = true;
+            this.rdoVaccine.Text = "Vaccine";
+            this.rdoVaccine.UseVisualStyleBackColor = true;
             // 
             // gridHienThi
             // 
@@ -240,63 +242,57 @@
             this.dateTimeHSD.Cursor = System.Windows.Forms.Cursors.No;
             this.dateTimeHSD.CustomFormat = "";
             this.dateTimeHSD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeHSD.Location = new System.Drawing.Point(918, 151);
+            this.dateTimeHSD.Location = new System.Drawing.Point(918, 453);
             this.dateTimeHSD.Name = "dateTimeHSD";
             this.dateTimeHSD.Size = new System.Drawing.Size(225, 23);
             this.dateTimeHSD.TabIndex = 9;
             // 
             // txtSoLuongTon
             // 
-            this.txtSoLuongTon.Location = new System.Drawing.Point(182, 151);
+            this.txtSoLuongTon.Location = new System.Drawing.Point(182, 453);
             this.txtSoLuongTon.Name = "txtSoLuongTon";
             this.txtSoLuongTon.Size = new System.Drawing.Size(594, 22);
             this.txtSoLuongTon.StyleController = this.layoutControl1;
             this.txtSoLuongTon.TabIndex = 8;
+            this.txtSoLuongTon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuongTon_KeyPress);
             // 
             // txtSoLieuTon
             // 
-            this.txtSoLieuTon.Location = new System.Drawing.Point(918, 123);
+            this.txtSoLieuTon.Location = new System.Drawing.Point(918, 425);
             this.txtSoLieuTon.Name = "txtSoLieuTon";
             this.txtSoLieuTon.Size = new System.Drawing.Size(593, 22);
             this.txtSoLieuTon.StyleController = this.layoutControl1;
             this.txtSoLieuTon.TabIndex = 7;
+            this.txtSoLieuTon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLieuTon_KeyPress);
             // 
             // txtTinhTrang
             // 
-            this.txtTinhTrang.Location = new System.Drawing.Point(1285, 151);
+            this.txtTinhTrang.Location = new System.Drawing.Point(1285, 453);
             this.txtTinhTrang.Name = "txtTinhTrang";
             this.txtTinhTrang.Size = new System.Drawing.Size(226, 22);
             this.txtTinhTrang.StyleController = this.layoutControl1;
             this.txtTinhTrang.TabIndex = 6;
+            this.txtTinhTrang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTinhTrang_KeyPress);
             // 
             // txtSoLo
             // 
-            this.txtSoLo.Enabled = false;
-            this.txtSoLo.Location = new System.Drawing.Point(182, 123);
+            this.txtSoLo.Location = new System.Drawing.Point(182, 425);
             this.txtSoLo.Name = "txtSoLo";
             this.txtSoLo.Size = new System.Drawing.Size(594, 22);
             this.txtSoLo.StyleController = this.layoutControl1;
             this.txtSoLo.TabIndex = 5;
             // 
-            // txtMaVC
-            // 
-            this.txtMaVC.Location = new System.Drawing.Point(182, 232);
-            this.txtMaVC.Name = "txtMaVC";
-            this.txtMaVC.Size = new System.Drawing.Size(593, 22);
-            this.txtMaVC.StyleController = this.layoutControl1;
-            this.txtMaVC.TabIndex = 4;
-            // 
             // txtLoaiVC
             // 
-            this.txtLoaiVC.Location = new System.Drawing.Point(917, 232);
+            this.txtLoaiVC.Location = new System.Drawing.Point(920, 534);
             this.txtLoaiVC.Name = "txtLoaiVC";
-            this.txtLoaiVC.Size = new System.Drawing.Size(594, 22);
+            this.txtLoaiVC.Size = new System.Drawing.Size(591, 22);
             this.txtLoaiVC.StyleController = this.layoutControl1;
             this.txtLoaiVC.TabIndex = 4;
             // 
             // txtMaVaccine
             // 
-            this.txtMaVaccine.Location = new System.Drawing.Point(182, 366);
+            this.txtMaVaccine.Location = new System.Drawing.Point(182, 123);
             this.txtMaVaccine.Name = "txtMaVaccine";
             this.txtMaVaccine.Size = new System.Drawing.Size(593, 22);
             this.txtMaVaccine.StyleController = this.layoutControl1;
@@ -304,7 +300,7 @@
             // 
             // txtTacDungPhu
             // 
-            this.txtTacDungPhu.Location = new System.Drawing.Point(182, 422);
+            this.txtTacDungPhu.Location = new System.Drawing.Point(182, 179);
             this.txtTacDungPhu.Name = "txtTacDungPhu";
             this.txtTacDungPhu.Size = new System.Drawing.Size(1329, 22);
             this.txtTacDungPhu.StyleController = this.layoutControl1;
@@ -312,7 +308,7 @@
             // 
             // txtChongChiDinh
             // 
-            this.txtChongChiDinh.Location = new System.Drawing.Point(182, 394);
+            this.txtChongChiDinh.Location = new System.Drawing.Point(182, 151);
             this.txtChongChiDinh.Name = "txtChongChiDinh";
             this.txtChongChiDinh.Size = new System.Drawing.Size(1329, 22);
             this.txtChongChiDinh.StyleController = this.layoutControl1;
@@ -320,7 +316,7 @@
             // 
             // txtTenVC
             // 
-            this.txtTenVC.Location = new System.Drawing.Point(917, 366);
+            this.txtTenVC.Location = new System.Drawing.Point(917, 123);
             this.txtTenVC.Name = "txtTenVC";
             this.txtTenVC.Size = new System.Drawing.Size(594, 22);
             this.txtTenVC.StyleController = this.layoutControl1;
@@ -328,7 +324,7 @@
             // 
             // txtCachDung
             // 
-            this.txtCachDung.Location = new System.Drawing.Point(182, 450);
+            this.txtCachDung.Location = new System.Drawing.Point(182, 207);
             this.txtCachDung.Name = "txtCachDung";
             this.txtCachDung.Size = new System.Drawing.Size(1329, 22);
             this.txtCachDung.StyleController = this.layoutControl1;
@@ -336,7 +332,7 @@
             // 
             // txtLieuLuong
             // 
-            this.txtLieuLuong.Location = new System.Drawing.Point(182, 478);
+            this.txtLieuLuong.Location = new System.Drawing.Point(182, 235);
             this.txtLieuLuong.Name = "txtLieuLuong";
             this.txtLieuLuong.Size = new System.Drawing.Size(1329, 22);
             this.txtLieuLuong.StyleController = this.layoutControl1;
@@ -344,7 +340,7 @@
             // 
             // txtDungMoi
             // 
-            this.txtDungMoi.Location = new System.Drawing.Point(182, 506);
+            this.txtDungMoi.Location = new System.Drawing.Point(182, 263);
             this.txtDungMoi.Name = "txtDungMoi";
             this.txtDungMoi.Size = new System.Drawing.Size(593, 22);
             this.txtDungMoi.StyleController = this.layoutControl1;
@@ -352,7 +348,7 @@
             // 
             // txtXuatXu
             // 
-            this.txtXuatXu.Location = new System.Drawing.Point(917, 506);
+            this.txtXuatXu.Location = new System.Drawing.Point(917, 263);
             this.txtXuatXu.Name = "txtXuatXu";
             this.txtXuatXu.Size = new System.Drawing.Size(594, 22);
             this.txtXuatXu.StyleController = this.layoutControl1;
@@ -360,11 +356,20 @@
             // 
             // txtChiDinhTiem
             // 
-            this.txtChiDinhTiem.Location = new System.Drawing.Point(182, 534);
+            this.txtChiDinhTiem.Location = new System.Drawing.Point(182, 291);
             this.txtChiDinhTiem.Name = "txtChiDinhTiem";
             this.txtChiDinhTiem.Size = new System.Drawing.Size(1329, 22);
             this.txtChiDinhTiem.StyleController = this.layoutControl1;
             this.txtChiDinhTiem.TabIndex = 17;
+            // 
+            // comboMaVC
+            // 
+            this.comboMaVC.FormattingEnabled = true;
+            this.comboMaVC.Location = new System.Drawing.Point(182, 534);
+            this.comboMaVC.Name = "comboMaVC";
+            this.comboMaVC.Size = new System.Drawing.Size(596, 24);
+            this.comboMaVC.TabIndex = 19;
+            this.comboMaVC.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // layoutControlGroup1
             // 
@@ -392,19 +397,19 @@
             // 
             // layoutControlItem9
             // 
-            this.layoutControlItem9.Control = this.rdoLoVC;
+            this.layoutControlItem9.Control = this.rdoVaccine;
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(765, 31);
+            this.layoutControlItem9.Size = new System.Drawing.Size(766, 31);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
             // layoutControlItem11
             // 
-            this.layoutControlItem11.Control = this.rdoVC;
-            this.layoutControlItem11.Location = new System.Drawing.Point(765, 0);
+            this.layoutControlItem11.Control = this.rdoLoVC;
+            this.layoutControlItem11.Location = new System.Drawing.Point(766, 0);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(766, 31);
+            this.layoutControlItem11.Size = new System.Drawing.Size(765, 31);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
@@ -413,7 +418,7 @@
             this.groupThongTinLoVC.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup3,
             this.layoutControlGroup2});
-            this.groupThongTinLoVC.Location = new System.Drawing.Point(0, 31);
+            this.groupThongTinLoVC.Location = new System.Drawing.Point(0, 333);
             this.groupThongTinLoVC.Name = "groupThongTinLoVC";
             this.groupThongTinLoVC.Size = new System.Drawing.Size(1531, 243);
             this.groupThongTinLoVC.Text = "Thông tin lô vaccine";
@@ -479,37 +484,38 @@
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem10});
+            this.layoutControlItem10,
+            this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 109);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(1501, 81);
             this.layoutControlGroup2.Text = "Vaccine";
             // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.txtMaVC;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(735, 28);
-            this.layoutControlItem1.Text = "Mã vaccine";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(133, 16);
-            // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.txtLoaiVC;
             this.layoutControlItem10.CustomizationFormText = "Địa chỉ";
-            this.layoutControlItem10.Location = new System.Drawing.Point(735, 0);
+            this.layoutControlItem10.Location = new System.Drawing.Point(738, 0);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(736, 28);
+            this.layoutControlItem10.Size = new System.Drawing.Size(733, 28);
             this.layoutControlItem10.Text = "Loại vaccine";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(133, 17);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.comboMaVC;
+            this.layoutControlItem1.CustomizationFormText = "Giới tính";
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(738, 28);
+            this.layoutControlItem1.Text = "Mã vaccine";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(133, 16);
             // 
             // groupThongTinVC
             // 
             this.groupThongTinVC.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup5});
-            this.groupThongTinVC.Location = new System.Drawing.Point(0, 274);
+            this.groupThongTinVC.Location = new System.Drawing.Point(0, 31);
             this.groupThongTinVC.Name = "groupThongTinVC";
             this.groupThongTinVC.Size = new System.Drawing.Size(1531, 302);
             this.groupThongTinVC.Text = "Thông tin vaccine";
@@ -631,6 +637,7 @@
             this.Name = "frmQuanLyVaccine";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý vaccine";
+            this.Load += new System.EventHandler(this.frmQuanLyVaccine_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -645,7 +652,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLieuTon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTinhTrang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaVC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoaiVC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaVaccine.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTacDungPhu.Properties)).EndInit();
@@ -668,8 +674,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupThongTinVC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
@@ -690,8 +696,8 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private System.Windows.Forms.RadioButton rdoVC;
         private System.Windows.Forms.RadioButton rdoLoVC;
+        private System.Windows.Forms.RadioButton rdoVaccine;
         private DevExpress.XtraGrid.GridControl gridHienThi;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Views.Layout.LayoutView layoutView1;
@@ -701,7 +707,6 @@
         private DevExpress.XtraEditors.TextEdit txtSoLieuTon;
         private DevExpress.XtraEditors.TextEdit txtTinhTrang;
         private DevExpress.XtraEditors.TextEdit txtSoLo;
-        private DevExpress.XtraEditors.TextEdit txtMaVC;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
@@ -713,7 +718,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlGroup groupThongTinVC;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
@@ -737,6 +741,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
+        private System.Windows.Forms.ComboBox comboMaVC;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
 
     }
 }

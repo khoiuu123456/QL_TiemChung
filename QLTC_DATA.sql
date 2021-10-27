@@ -175,11 +175,11 @@ GO
 create table LOVACCINE 
 (
    SOLO                 char(5)                        PRIMARY KEY CONSTRAINT IDLV DEFAULT DBO.AUTO_IDLV(),
-   SOLUONGTON           int                            null,
-   SOLIEUTON            int                            null,
+   SOLUONGTON           int                            CHECK(SOLUONGTON>=0),
+   SOLIEUTON            int                            CHECK(SOLIEUTON>=0),
    HANSUDUNG            date                           null,
    MAVACCINE            char(5)                        null,
-   TINHTRANG            int                            null,
+   TINHTRANG            int                            CHECK(TINHTRANG>=0 AND TINHTRANG <= 1),
    LOAIVACCINE          nvarchar(50)                   null,
    --constraint PK_LOVACCINE primary key clustered (SOLO)
 );
@@ -831,7 +831,7 @@ VALUES
 INSERT INTO CHITIETPHIEUNHAPLAI
 VALUES
 ('PNL001','LV001',12,6)
-
+GO
 ------------------------------------------------------------------------------CÁC THỦ TỤC------------------------------------------------------------------------------
 --Thủ tục kiểm tra đăng nhập
 CREATE PROC sp_KiemTraDangNhap @tenTaiKhoan NVARCHAR(100), @matKhau NVARCHAR(100), @Kq INT OUTPUT
@@ -940,8 +940,8 @@ AS
 	        ) 
 	END
 GO
-----------------------------------------------------------------------THỦ TỤC CỦA BÉ----------------------------------------------------------------------   
---Thủ tục thêm thông tin bé
+----------------------------------------------------------------------THỦ TỤC CỦA Vaccine----------------------------------------------------------------------   
+--Thủ tục thêm thông tin vaccine
 CREATE PROC sp_ThemVaccine @TENVACCINE nvarchar(50), @CHONGCHIDINH nvarchar(1000), @TACDUNGPHU nvarchar(1000),@CACHDUNG nvarchar(1000),@LIEULUONG nvarchar(1000), @DUNGMOI nvarchar(1000), @XUATXU nvarchar(1000),@CHIDINHTIEM nvarchar(1000)
 AS
 	BEGIN
@@ -956,7 +956,7 @@ AS
 			  XUATXU,
 			  CHIDINHTIEM
 	        )
-	VALUES  (DBO.AUTO_IDBE(),
+	VALUES  (DBO.AUTO_IDVC(),
 			@TENVACCINE,
 			@CHONGCHIDINH,
 			@TACDUNGPHU,
