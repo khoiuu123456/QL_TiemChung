@@ -47,5 +47,24 @@ namespace UngDungQuanLyTiemChung
             hoso.MdiParent = this;
             hoso.Show();
         }
+
+        private void btnThongTinNV_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmQuanLyVaccine vc = new frmQuanLyVaccine();
+            vc.MdiParent = this;
+            vc.Show();
+        }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmKhangNguyen kn = new frmKhangNguyen();
+            kn.MdiParent = this;
+            kn.Show();
+        }
     }
 }

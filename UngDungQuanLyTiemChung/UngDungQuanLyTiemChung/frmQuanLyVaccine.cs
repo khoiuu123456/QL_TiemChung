@@ -42,27 +42,27 @@ namespace UngDungQuanLyTiemChung
                 gridView1.Columns.Add(col);
                 gridView1.Columns[i].Visible = true;
             }
-            DevExpress.XtraGrid.Views.Grid.GridView gridViewDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
-            gridViewDetail.GridControl = gridHienThi;
-            string[] detail_fields = { "MAVACCINE", "TENVACCINE", "CHONGCHIDINH", "TACDUNGPHU", "CACHDUNG", "LIEULUONG", "DUNGMOI", "XUATXU", "CHIDINHTIEM" };
-            string[] detail_captions = { "Mã vaccine", "Tên vaccine", "Chống chỉ định", "Tác dụng phụ", "Cách dùng", "Liều lượng", "Dung môi", "Xuất xứ", "Chỉ định tiêm" };
-            for (int i = 0; i < detail_fields.Length; i++)
-            {
-                DevExpress.XtraGrid.Columns.GridColumn col = new DevExpress.XtraGrid.Columns.GridColumn();
-                col.FieldName = detail_fields[i];
-                col.Caption = detail_captions[i];
-                gridViewDetail.Columns.Add(col);
-                gridViewDetail.Columns[i].Visible = true;
-            }
-            if (gridHienThi.ViewCollection.Count > 1)
-                gridHienThi.ViewCollection.RemoveAt(1); //loại bỏ cái cũ
-            gridHienThi.ViewCollection.Add(gridViewDetail);
-            DevExpress.XtraGrid.GridLevelNode gridLevelNodeDetail = new DevExpress.XtraGrid.GridLevelNode();
-            gridLevelNodeDetail.LevelTemplate = gridViewDetail;
-            gridLevelNodeDetail.RelationName = "Danh sách vaccine";
-            if (gridHienThi.LevelTree.Nodes.Contains("Danh sách vaccine"))
-                gridHienThi.LevelTree.Nodes.RemoveAt(0); //loại bỏ cái cũ
-            gridHienThi.LevelTree.Nodes.Add(gridLevelNodeDetail);
+            //DevExpress.XtraGrid.Views.Grid.GridView gridViewDetail = new DevExpress.XtraGrid.Views.Grid.GridView();
+            //gridViewDetail.GridControl = gridHienThi;
+            //string[] detail_fields = { "MAVACCINE", "TENVACCINE", "CHONGCHIDINH", "TACDUNGPHU", "CACHDUNG", "LIEULUONG", "DUNGMOI", "XUATXU", "CHIDINHTIEM" };
+            //string[] detail_captions = { "Mã vaccine", "Tên vaccine", "Chống chỉ định", "Tác dụng phụ", "Cách dùng", "Liều lượng", "Dung môi", "Xuất xứ", "Chỉ định tiêm" };
+            //for (int i = 0; i < detail_fields.Length; i++)
+            //{
+            //    DevExpress.XtraGrid.Columns.GridColumn col = new DevExpress.XtraGrid.Columns.GridColumn();
+            //    col.FieldName = detail_fields[i];
+            //    col.Caption = detail_captions[i];
+            //    gridViewDetail.Columns.Add(col);
+            //    gridViewDetail.Columns[i].Visible = true;
+            //}
+            //if (gridHienThi.ViewCollection.Count > 1)
+            //    gridHienThi.ViewCollection.RemoveAt(1); //loại bỏ cái cũ
+            //gridHienThi.ViewCollection.Add(gridViewDetail);
+            //DevExpress.XtraGrid.GridLevelNode gridLevelNodeDetail = new DevExpress.XtraGrid.GridLevelNode();
+            //gridLevelNodeDetail.LevelTemplate = gridViewDetail;
+            //gridLevelNodeDetail.RelationName = "Danh sách vaccine";
+            //if (gridHienThi.LevelTree.Nodes.Contains("Danh sách vaccine"))
+            //    gridHienThi.LevelTree.Nodes.RemoveAt(0); //loại bỏ cái cũ
+            //gridHienThi.LevelTree.Nodes.Add(gridLevelNodeDetail);
         }
         private void FormatGrid_VC()
         {
@@ -186,7 +186,7 @@ namespace UngDungQuanLyTiemChung
                         return;
                     }
                     string SOLUONGTON = txtSoLuongTon.Text.Trim();
-                    string SOLIEUTON = txtSoLuongTon.Text.Trim();
+                    string SOLIEUTON = txtSoLieuTon.Text.Trim();
                     string HANSUDUNG = dateTimeHSD.Value.ToString("MM/dd/yyyy");
                     string MAVACCINE = txtMaVaccine.Text.Trim();
                     string TINHTRANG = txtTinhTrang.Text.Trim();
@@ -285,7 +285,6 @@ namespace UngDungQuanLyTiemChung
                             lovaccine.xoaLoVC(solo);
                             MessageBox.Show("Xóa thành công");
                             FillGrid_LoVC();
-                            txtSoLo.DataBindings.Clear();
                         }
                         catch (Exception ex)
                         {
@@ -346,7 +345,7 @@ namespace UngDungQuanLyTiemChung
                         return;
                     }
                     string SOLUONGTON = txtSoLuongTon.Text.Trim();
-                    string SOLIEUTON = txtSoLuongTon.Text.Trim();
+                    string SOLIEUTON = txtSoLieuTon.Text.Trim();
                     string HANSUDUNG = dateTimeHSD.Value.ToString("MM/dd/yyyy");
                     string MAVACCINE = comboMaVC.Text.Trim();
                     string TINHTRANG = txtTinhTrang.Text.Trim();

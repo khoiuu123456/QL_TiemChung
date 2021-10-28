@@ -11,8 +11,8 @@ go
 /*==============================================================*/
 create table CHITIETKHANGNGUYEN 
 (
-   MAVACCINE			    char(5)                        not null,
    MAKHANGNGUYEN            char(5)                        not null,
+   MAVACCINE			    char(5)                        not null,
    constraint PK_CHITIETKHANGNGUYEN primary key clustered (MAKHANGNGUYEN, MAVACCINE)
 );
 
@@ -762,20 +762,20 @@ trên 1 tuổi và người lớn chưa có miễn dịch.')
 
 INSERT INTO CHITIETKHANGNGUYEN
 VALUES
-('VC001','KN001'),
-('VC002','KN001'),
-('VC003','KN002'),
-('VC003','KN003'),
-('VC003','KN004'),
-('VC004','KN005'),
-('VC004','KN006'),
-('VC004','KN007'),
-('VC005','KN008'),
-('VC006','KN009'),
-('VC007','KN010'),
-('VC008','KN006'),
-('VC009','KN011'),
-('VC010','KN012');
+('KN001','VC001'),
+('KN001','VC002'),
+('KN002','VC003'),
+('KN003','VC003'),
+('KN004','VC003'),
+('KN005','VC004'),
+('KN006','VC004'),
+('KN007','VC004'),
+('KN008','VC005'),
+('KN009','VC006'),
+('KN010','VC007'),
+('KN006','VC008'),
+('KN011','VC009'),
+('KN012','VC010');
 
 INSERT INTO LOVACCINE
 VALUES
