@@ -10,6 +10,25 @@ namespace DAO
     public class DAO_loVaccine
     {
         static SqlConnection conn = new SqlConnection(SQLDatabase.ConnectionString);
+        public DataTable taobang(string sql)
+        {
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            dt = ds.Tables[0];
+            return dt;
+        }
+        public bool CheckKey(string sql)
+        {
+            SqlDataAdapter MyData = new SqlDataAdapter(sql, conn);
+            DataTable table = new DataTable();
+            MyData.Fill(table);
+            if (table.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
         public DataTable loadLoVaccine()
         {
             DataTable dt = new DataTable();
@@ -24,15 +43,6 @@ namespace DAO
             }
             catch { }
             finally { conn.Close(); }
-            return dt;
-        }
-        public DataTable taobang(string sql)
-        {
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            dt = ds.Tables[0];
             return dt;
         }
         public DataTable GetVC()

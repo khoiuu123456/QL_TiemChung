@@ -968,3 +968,32 @@ AS
 			) 
 	END
 GO
+----------------------------------------------------------------------THỦ TỤC CỦA Kháng Nguyên----------------------------------------------------------------------   
+--Thủ tục thêm thông tin khángnguyen
+CREATE PROC sp_ThemKhangNguyen @LOAIBENH nvarchar(1000)
+AS
+	BEGIN
+	INSERT INTO dbo.KHANGNGUYEN
+	        ( MAKHANGNGUYEN ,
+	          LOAIBENH 
+	        )
+	VALUES  (DBO.AUTO_IDKN(),
+			@LOAIBENH
+			) 
+	END
+GO
+--Thủ tục thêm thông tin chi tiet khang nguyen
+CREATE PROC sp_ThemCTKN @MAKHANGNGUYEN nvarchar(5),@MAVACCINE nvarchar(5)
+AS
+	BEGIN
+	INSERT INTO dbo.CHITIETKHANGNGUYEN
+	        ( MAKHANGNGUYEN ,
+	          MAVACCINE 
+	        )
+	VALUES  (@MAKHANGNGUYEN,
+			@MAVACCINE
+			) 
+	END
+GO
+
+
