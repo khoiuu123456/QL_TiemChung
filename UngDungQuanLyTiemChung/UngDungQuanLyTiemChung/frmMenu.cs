@@ -55,6 +55,7 @@ namespace UngDungQuanLyTiemChung
 
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
+            frmQuanLyVaccine.trangthai = 0;
             frmQuanLyVaccine vc = new frmQuanLyVaccine();
             vc.MdiParent = this;
             vc.Show();
@@ -65,6 +66,27 @@ namespace UngDungQuanLyTiemChung
             frmKhangNguyen kn = new frmKhangNguyen();
             kn.MdiParent = this;
             kn.Show();
+        }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmNhapVaccine nhapvc = new frmNhapVaccine();
+            nhapvc.MdiParent = this;
+            nhapvc.Show();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmXuatVaccine xuatvc = new frmXuatVaccine();
+            xuatvc.MdiParent = this;
+            xuatvc.Show();
+        }
+
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmBieuDo f = new frmBieuDo();
+            f.MdiParent = this;
+            f.Show();
         }
     }
 }

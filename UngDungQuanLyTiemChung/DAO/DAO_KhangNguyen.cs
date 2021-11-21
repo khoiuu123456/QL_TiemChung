@@ -60,6 +60,7 @@ namespace DAO
                 cmd.ExecuteNonQuery();
                 SQLDatabase.CloseConnection(conn);
         }
+
         public void themCTKN(string makn, string mavc)
         {
             SQLDatabase.OpenConnection(conn);
@@ -92,6 +93,18 @@ namespace DAO
             {
                 SQLDatabase.OpenConnection(conn);
                 string sql = "DELETE dbo.CHITIETKHANGNGUYEN WHERE MAKHANGNGUYEN = '" + makn + "' and mavaccine='" + mavc + "'";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch { }
+            finally { SQLDatabase.CloseConnection(conn); }
+        }
+        public void XoaCTKN(string makn)
+        {
+            try
+            {
+                SQLDatabase.OpenConnection(conn);
+                string sql = "DELETE dbo.CHITIETKHANGNGUYEN WHERE MAKHANGNGUYEN = '" + makn + "'";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             }

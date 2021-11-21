@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
+//lib FireSharp to Firebase
+
 
 namespace UngDungQuanLyTiemChung
 {
@@ -171,6 +173,7 @@ namespace UngDungQuanLyTiemChung
             {
                 try
                 {
+                    khangnguyen.XoaCTKN(kn);
                     khangnguyen.xoaKhangNguyen(kn);
                     MessageBox.Show("Xóa thành công");
                     frmKhangNguyen_Load(sender, e);

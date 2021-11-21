@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAO;
+using Microsoft.VisualBasic;
 
 namespace UngDungQuanLyTiemChung
 {
@@ -15,6 +16,7 @@ namespace UngDungQuanLyTiemChung
     {
         DAO_loVaccine cn = new DAO_loVaccine();
         private DAO_loVaccine lovaccine;
+        public static int trangthai = 0;
         public frmQuanLyVaccine()
         {
             InitializeComponent();
@@ -33,8 +35,8 @@ namespace UngDungQuanLyTiemChung
         private void FormatGrid_LoVC()
         {
             gridView1.Columns.Clear();
-            string[] fields = { "SOLO", "SOLUONGTON", "SOLIEUTON", "HANSUDUNG", "TINHTRANG", "MAVACCINE", "LOAIVACCINE" };
-            string[] captions = { "Số lô", "Số lượng tồn", "Số liều tồn", "Hạn sử dụng", "Tình trạng", "Mã vaccine", "Loại vaccine" };
+            string[] fields = { "SOLO", "SOLUONGTON", "SOLIEUTON", "HANSUDUNG", "DVT", "MAVACCINE", "LOAIVACCINE" };
+            string[] captions = { "Số lô", "Số lượng tồn", "Số liều tồn", "Hạn sử dụng", "Đơn vị", "Mã vaccine", "Loại vaccine" };
             for (int i = 0; i < fields.Length; i++)
             {
                 DevExpress.XtraGrid.Columns.GridColumn col = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,8 +82,8 @@ namespace UngDungQuanLyTiemChung
             txtSoLieuTon.DataBindings.Add("Text", gridHienThi.DataSource, "SOLIEUTON");
             dateTimeHSD.DataBindings.Clear();
             dateTimeHSD.DataBindings.Add("Text", gridHienThi.DataSource, "HANSUDUNG");
-            txtTinhTrang.DataBindings.Clear();
-            txtTinhTrang.DataBindings.Add("Text", gridHienThi.DataSource, "TINHTRANG");
+            txtDonVi.DataBindings.Clear();
+            txtDonVi.DataBindings.Add("Text", gridHienThi.DataSource, "DVT");
             comboMaVC.DataBindings.Clear();
             comboMaVC.DataBindings.Add("Text", gridHienThi.DataSource, "MAVACCINE");
             txtLoaiVC.DataBindings.Clear();
@@ -135,22 +137,32 @@ namespace UngDungQuanLyTiemChung
 
         private void rdoVaccine_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoLoVC.Checked == true)
+            if (trangthai == 0)
             {
-                txtSoLo.ReadOnly = true;
+                if (rdoLoVC.Checked == true)
+                {
+                    FormatGrid_LoVC();
+                    FillGrid_LoVC();
+                    groupThongTinLoVC.Expanded = true;
+                    groupThongTinVC.Expanded = false;
+                }
+                else
+                {
+                    txtMaVaccine.ReadOnly = true;
+                    FormatGrid_VC();
+                    FillGrid_VC();
+                    groupThongTinVC.Expanded = true;
+                    groupThongTinLoVC.Expanded = false;
+                }
+            }
+            else
+            {
+                rdoVaccine.Enabled = false;
+                rdoLoVC.Checked = true;
                 FormatGrid_LoVC();
                 FillGrid_LoVC();
                 groupThongTinLoVC.Expanded = true;
                 groupThongTinVC.Expanded = false;
-
-            }
-            else
-            {
-                txtMaVaccine.ReadOnly = true;
-                FormatGrid_VC();
-                FillGrid_VC();
-                groupThongTinVC.Expanded = true;
-                groupThongTinLoVC.Expanded = false;
             }
         }
 
@@ -164,7 +176,7 @@ namespace UngDungQuanLyTiemChung
             {
                 FillGrid_VC();
             }
-            
+
         }
 
         private void btnThem_Click_1(object sender, EventArgs e)
@@ -181,9 +193,9 @@ namespace UngDungQuanLyTiemChung
                     MessageBox.Show("Bạn phải nhập số liều tồn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (txtTinhTrang.Text.Length == 0)
+                if (txtDonVi.Text.Length == 0)
                 {
-                    MessageBox.Show("Bạn phải nhập tình trạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Bạn phải nhập đơn vị tính", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (txtLoaiVC.Text.Length == 0)
@@ -191,19 +203,18 @@ namespace UngDungQuanLyTiemChung
                     MessageBox.Show("Bạn phải nhập loại vaccine", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                string SOLO = txtSoLo.Text.Trim();
                 string SOLUONGTON = txtSoLuongTon.Text.Trim();
                 string SOLIEUTON = txtSoLieuTon.Text.Trim();
                 string HANSUDUNG = dateTimeHSD.Value.ToString("MM/dd/yyyy");
-                string MAVACCINE = txtMaVaccine.Text.Trim();
-                string TINHTRANG = txtTinhTrang.Text.Trim();
+                string MAVACCINE = comboMaVC.Text.Trim();
+                string DVT = txtDonVi.Text.Trim();
                 string LOAIVACCINE = txtLoaiVC.Text.Trim();
                 try
                 {
-                    if (lovaccine.themLoVaccine(SOLUONGTON, SOLIEUTON, HANSUDUNG, MAVACCINE, TINHTRANG, LOAIVACCINE))
-                    {
-                        FillGrid_LoVC();
-                        MessageBox.Show("Thêm thành công");
-                    }
+                    lovaccine.themLoVaccine(SOLO, SOLUONGTON, SOLIEUTON, HANSUDUNG, MAVACCINE, DVT, LOAIVACCINE);
+                    FillGrid_LoVC();
+                    MessageBox.Show("Thêm thành công");
                 }
                 catch (Exception ex)
                 {
@@ -243,7 +254,7 @@ namespace UngDungQuanLyTiemChung
                     MessageBox.Show("Bạn phải nhập dung môi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (txtXuatXu.Text.Length == 0)
+                if (txtXuatXu.Text.Length == 0 || txtXuatXu.Text == "Khác...")
                 {
                     MessageBox.Show("Bạn phải nhập xuất xứ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -254,16 +265,17 @@ namespace UngDungQuanLyTiemChung
                     return;
                 }
                 string TENVACCINE = txtTenVC.Text.Trim();
+                string MAVACCINE = TENVACCINE.Substring(0,3);
                 string CHONGCHIDINH = txtChongChiDinh.Text.Trim();
                 string TACDUNGPHU = txtTacDungPhu.Text.Trim();
                 string CACHDUNG = txtCachDung.Text.Trim();
-                string LIEULUONG = txtLieuLuong.Text.Trim();
+                string LIEULUONG = txtLieuLuong.Text.Trim()+" ml";
                 string DUNGMOI = txtDungMoi.Text.Trim();
                 string XUATXU = txtXuatXu.Text.Trim();
                 string CHIDINHTIEM = txtChiDinhTiem.Text.Trim();
                 try
                 {
-                    lovaccine.themThongTinVC(TENVACCINE, CHONGCHIDINH, TACDUNGPHU, CACHDUNG, LIEULUONG, DUNGMOI, XUATXU, CHIDINHTIEM);
+                    lovaccine.themThongTinVC(MAVACCINE,TENVACCINE, CHONGCHIDINH, TACDUNGPHU, CACHDUNG, LIEULUONG, DUNGMOI, XUATXU, CHIDINHTIEM);
                     FillGrid_VC();
                     MessageBox.Show("Thêm thành công");
                 }
@@ -294,9 +306,9 @@ namespace UngDungQuanLyTiemChung
                     MessageBox.Show("Bạn phải nhập số liều tồn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (txtTinhTrang.Text.Length == 0)
+                if (txtDonVi.Text.Length == 0)
                 {
-                    MessageBox.Show("Bạn phải nhập tình trạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Bạn phải nhập đơn vị tính", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (txtLoaiVC.Text.Length == 0)
@@ -308,19 +320,21 @@ namespace UngDungQuanLyTiemChung
                 string SOLIEUTON = txtSoLieuTon.Text.Trim();
                 string HANSUDUNG = dateTimeHSD.Value.ToString("MM/dd/yyyy");
                 string MAVACCINE = comboMaVC.Text.Trim();
-                string TINHTRANG = txtTinhTrang.Text.Trim();
+                string DVT = txtDonVi.Text.Trim();
                 string LOAIVACCINE = txtLoaiVC.Text.Trim();
-                string solo = txtSoLo.Text.ToString();
+                string solo = txtSoLo.Text.Trim();
                 if (MessageBox.Show("Bạn muốn cập nhật lại lô vaccine mã " + solo, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (lovaccine.capNhatLoVC(SOLUONGTON, SOLIEUTON, HANSUDUNG, MAVACCINE, TINHTRANG, LOAIVACCINE, solo))
+                    try
                     {
+                        lovaccine.capNhatLoVC(SOLUONGTON, SOLIEUTON, HANSUDUNG, MAVACCINE, DVT, LOAIVACCINE, solo);
                         MessageBox.Show("Cập nhật thành công");
                         FillGrid_LoVC();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Cập nhật không thành công");
+                        MessageBox.Show("Cập nhật không thành công !");
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -443,6 +457,33 @@ namespace UngDungQuanLyTiemChung
                     }
                 }
             }
+        }
+
+        private void txtXuatXu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txtXuatXu.SelectedIndex == 5)
+            {
+                string content = Interaction.InputBox("Bạn hãy nhập xuất xứ ?", "Xuất xứ", "", 500, 300);
+                if (content != "")
+                {
+                    txtXuatXu.Items.Add(content);
+                }
+            }
+
+        }
+
+        private void txtLieuLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar) || e.KeyChar == '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnCreateCode_Click(object sender, EventArgs e)
+        {
+            frmCreateBarcode f = new frmCreateBarcode();
+            f.Show();
         }
     }
 }

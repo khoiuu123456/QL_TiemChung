@@ -9,7 +9,7 @@ namespace DAO
 {
     public class DAO_loVaccine
     {
-        static SqlConnection conn = new SqlConnection(SQLDatabase.ConnectionString);
+        public SqlConnection conn = new SqlConnection(SQLDatabase.ConnectionString);
         public DataTable taobang(string sql)
         {
             DataTable dt = new DataTable();
@@ -29,6 +29,30 @@ namespace DAO
             else
                 return false;
         }
+        public DataTable returnquery(string query)
+        {
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = query;
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable tb = new DataTable();
+            da.Fill(tb);
+            conn.Close();
+            return tb;
+        }
+        public string GetFieldValues(string sql)
+        {
+            conn.Close();
+            conn.Open();
+            string ma = "";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+                ma = reader.GetValue(0).ToString();
+            reader.Close();
+            return ma;
+        }
         public DataTable loadLoVaccine()
         {
             DataTable dt = new DataTable();
@@ -45,6 +69,7 @@ namespace DAO
             finally { conn.Close(); }
             return dt;
         }
+
         public DataTable GetVC()
         {
             DataTable dt = new DataTable();
@@ -87,41 +112,34 @@ namespace DAO
             conn.Close();
             return dts;
         }
-        public bool themLoVaccine(string SOLUONGTON, string SOLIEUTON, string HANSUDUNG, string MAVACCINE, string TINHTRANG, string LOAIVACCINE)
+        public void themLoVaccine(string SOLO, string SOLUONGTON, string SOLIEUTON, string HANSUDUNG, string MAVACCINE, string DVT, string LOAIVACCINE)
         {
-            try
-            {
-                SQLDatabase.OpenConnection(conn);
-                SqlCommand cmd = new SqlCommand("sp_ThemLoVaccine", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter par1 = new SqlParameter("@SOLUONGTON", SqlDbType.NVarChar);
-                par1.Value = SOLUONGTON;
-                SqlParameter par2 = new SqlParameter("@SOLIEUTON", SqlDbType.NVarChar);
-                par2.Value = SOLIEUTON;
-                SqlParameter par3 = new SqlParameter("@HANSUDUNG", SqlDbType.NVarChar);
-                par3.Value = HANSUDUNG;
-                SqlParameter par4 = new SqlParameter("@MAVACCINE", SqlDbType.NVarChar);
-                par4.Value = MAVACCINE;
-                SqlParameter par5 = new SqlParameter("@TINHTRANG", SqlDbType.NVarChar);
-                par5.Value = TINHTRANG;
-                SqlParameter par6 = new SqlParameter("@LOAIVACCINE", SqlDbType.NVarChar);
-                par6.Value = LOAIVACCINE;
-                cmd.Parameters.Add(par1);
-                cmd.Parameters.Add(par2);
-                cmd.Parameters.Add(par3);
-                cmd.Parameters.Add(par4);
-                cmd.Parameters.Add(par5);
-                cmd.Parameters.Add(par6);
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch
-            {
-
-                return false;
-            }
-
-            finally { SQLDatabase.CloseConnection(conn); }
+            SQLDatabase.OpenConnection(conn);
+            SqlCommand cmd = new SqlCommand("sp_ThemLoVaccine", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter par1 = new SqlParameter("@SOLO", SqlDbType.NVarChar);
+            par1.Value = SOLO;
+            SqlParameter par2 = new SqlParameter("@SOLUONGTON", SqlDbType.NVarChar);
+            par2.Value = SOLUONGTON;
+            SqlParameter par3 = new SqlParameter("@SOLIEUTON", SqlDbType.NVarChar);
+            par3.Value = SOLIEUTON;
+            SqlParameter par4 = new SqlParameter("@HANSUDUNG", SqlDbType.NVarChar);
+            par4.Value = HANSUDUNG;
+            SqlParameter par5 = new SqlParameter("@MAVACCINE", SqlDbType.NVarChar);
+            par5.Value = MAVACCINE;
+            SqlParameter par6 = new SqlParameter("@DVT", SqlDbType.NVarChar);
+            par6.Value = DVT;
+            SqlParameter par7 = new SqlParameter("@LOAIVACCINE", SqlDbType.NVarChar);
+            par7.Value = LOAIVACCINE;
+            cmd.Parameters.Add(par1);
+            cmd.Parameters.Add(par2);
+            cmd.Parameters.Add(par3);
+            cmd.Parameters.Add(par4);
+            cmd.Parameters.Add(par5);
+            cmd.Parameters.Add(par6);
+            cmd.Parameters.Add(par7);
+            cmd.ExecuteNonQuery();
+            SQLDatabase.CloseConnection(conn);
         }
         public void xoaLoVC(string SOLO)
         {
@@ -135,59 +153,26 @@ namespace DAO
             catch { }
             finally { SQLDatabase.CloseConnection(conn); }
         }
-        public bool capNhatLoVC(string SOLUONGTON, string SOLIEUTON, string HANSUDUNG, string MAVACCINE, string TINHTRANG, string LOAIVACCINE, string SOLO)
+        public void capNhatLoVC(string SOLUONGTON, string SOLIEUTON, string HANSUDUNG, string MAVACCINE, string DVT, string LOAIVACCINE, string SOLO)
+        {
+            SQLDatabase.OpenConnection(conn);
+            string sql = "UPDATE dbo.LOVACCINE SET SOLUONGTON = " + SOLUONGTON + ",SOLIEUTON = " + SOLIEUTON + ",HANSUDUNG = '" + HANSUDUNG + "',MAVACCINE = '" + MAVACCINE + "',DVT = N'" + DVT + "',LOAIVACCINE=N'" + LOAIVACCINE + "' WHERE SOLO = '" + SOLO + "'";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            SQLDatabase.CloseConnection(conn);
+        }
+
+        public bool themThongTinVC(string MAVACCINE,string TENVACCINE, string CHONGCHIDINH, string TACDUNGPHU, string CACHDUNG, string LIEULUONG, string DUNGMOI, string XUATXU, string CHIDINHTIEM)
         {
             try
             {
                 SQLDatabase.OpenConnection(conn);
-                string sql = "UPDATE dbo.LOVACCINE SET SOLUONGTON = " + SOLUONGTON + ",SOLIEUTON = " + SOLIEUTON + ",HANSUDUNG = '" + HANSUDUNG + "',MAVACCINE = '" + MAVACCINE + "',TINHTRANG = " + TINHTRANG + ",LOAIVACCINE='" + LOAIVACCINE + "' WHERE SOLO = '" + SOLO + "'";
+                string sql = "INSERT INTO VACCINE VALUES('" + MAVACCINE + "-'+DBO.AUTO_IDVC(),N'"+ TENVACCINE + "',N'" + CHONGCHIDINH + "',N'" + TACDUNGPHU + "',N'" + CACHDUNG + "',N'" + LIEULUONG + "',N'" + DUNGMOI + "',N'" + XUATXU + "',N'" + CHIDINHTIEM + "')";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
                 return true;
             }
             catch { return false; }
-            finally { SQLDatabase.CloseConnection(conn); }
-        }
-
-        public bool themThongTinVC(string TENVACCINE, string CHONGCHIDINH, string TACDUNGPHU, string CACHDUNG, string LIEULUONG, string DUNGMOI, string XUATXU, string CHIDINHTIEM)
-        {
-            try
-            {
-                SQLDatabase.OpenConnection(conn);
-                SqlCommand cmd = new SqlCommand("sp_ThemVaccine", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter par1 = new SqlParameter("@TENVACCINE", SqlDbType.NVarChar);
-                par1.Value = TENVACCINE;
-                SqlParameter par2 = new SqlParameter("@CHONGCHIDINH", SqlDbType.NVarChar);
-                par2.Value = CHONGCHIDINH;
-                SqlParameter par3 = new SqlParameter("@TACDUNGPHU", SqlDbType.NVarChar);
-                par3.Value = TACDUNGPHU;
-                SqlParameter par4 = new SqlParameter("@CACHDUNG", SqlDbType.NVarChar);
-                par4.Value = CACHDUNG;
-                SqlParameter par5 = new SqlParameter("@LIEULUONG", SqlDbType.NVarChar);
-                par5.Value = LIEULUONG;
-                SqlParameter par6 = new SqlParameter("@DUNGMOI", SqlDbType.NVarChar);
-                par6.Value = DUNGMOI;
-                SqlParameter par7 = new SqlParameter("@XUATXU", SqlDbType.NVarChar);
-                par7.Value = XUATXU;
-                SqlParameter par8 = new SqlParameter("@CHIDINHTIEM", SqlDbType.NVarChar);
-                par8.Value = CHIDINHTIEM;
-                cmd.Parameters.Add(par1);
-                cmd.Parameters.Add(par2);
-                cmd.Parameters.Add(par3);
-                cmd.Parameters.Add(par4);
-                cmd.Parameters.Add(par5);
-                cmd.Parameters.Add(par6);
-                cmd.Parameters.Add(par7);
-                cmd.Parameters.Add(par8);
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch
-            {
-
-                return false;
-            }
             finally { SQLDatabase.CloseConnection(conn); }
         }
         public bool xoaThongTinVC(string MAVACCINE)
